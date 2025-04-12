@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import jobRoutes from './routes/job.routes.js';
+import { errorHandler, notFound } from './middlewares/error.middleware.js';
 
 dotenv.config();
 
@@ -12,12 +13,12 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/jobs",jobRoutes);
+// Routes
+app.use('/api/jobs', jobRoutes);
 
-// Test route
-app.get('/', (req, res) => {
-  res.send('Voice Agent Backend is running');
-});
+// Error handling
+app.use(notFound);
+app.use(errorHandler);
 
 // Start server
 app.listen(PORT, () => {
