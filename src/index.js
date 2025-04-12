@@ -1,7 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import jobRoutes from './routes/job.routes.js';
+import jobRoute from './routes/job.route.js';
+import candidateRoute from './routes/candidate.route.js';
+import appointmentRoute from './routes/appointment.route.js';
 import { errorHandler, notFound } from './middlewares/error.middleware.js';
 
 dotenv.config();
@@ -14,7 +16,9 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/jobs', jobRoutes);
+app.use('/api/jobs', jobRoute);
+app.use('/api/candidates', candidateRoute);
+app.use('/api/appointments', appointmentRoute);
 
 // Error handling
 app.use(notFound);
