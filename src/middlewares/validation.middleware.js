@@ -90,3 +90,17 @@ export const validateAppointmentInput = (
 
   return errors;
 };
+
+export const validateConversationInput = ({ candidate_id, transcript }) => {
+  const errors = [];
+  
+  if (!candidate_id || isNaN(candidate_id)) {
+    errors.push('Valid candidate ID is required');
+  }
+
+  if (!transcript || typeof transcript !== 'string' || transcript.trim() === '') {
+    errors.push('Transcript text is required');
+  }
+
+  return errors;
+};

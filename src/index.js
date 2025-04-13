@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import jobRoute from './routes/job.route.js';
 import candidateRoute from './routes/candidate.route.js';
 import appointmentRoute from './routes/appointment.route.js';
+import conversationRoute from './routes/conversation.route.js';
 import { errorHandler, notFound } from './middlewares/error.middleware.js';
 
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use('/api/jobs', jobRoute);
 app.use('/api/candidates', candidateRoute);
 app.use('/api/appointments', appointmentRoute);
+app.use('/api/conversations', conversationRoute);
 
 // Error handling
 app.use(notFound);
