@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-//Connecting to Supabase
+//Connect to Supabase
 const { Pool } = pg;
 const pool = new Pool({
   connectionString: process.env.SUPABASE_DB_URL,
